@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% load static %}
+
+<!DOCTYPE html>
+
+<html lang="en">
+{% block extrahead %}
+	<title>Add Books</title>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/static/css/util.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/books_add.css">
+{% endblock %}
+
+{% block content %}
+<body style="background-color: #666666;">
+	
+	<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100">
+				<form class="login100-form validate-form" method="post">
+                    {% csrf_token %}
+					<span class="login100-form-title mb-3">
+                        Add Books
+					</span>
+
+                    <div class="form-group">
+                        <label>Book's Name</label>
+                        <label>
+                            <input type="text" name="name" class="form-control" placeholder="e.g.- The Alchemist">
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label>Author</label>
+                        <label>
+                            <select class="form-control" name="author_id">
+                                <option value="">Select Author</option>
+                                {% for author in authors %}
+                                    <option value="{{ author.id }}">{{ author.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label>Publisher</label>
+                        <label>
+                            <select class="form-control" name="publisher_id">
+                                <option value="">Select Publisher</option>
+                                {% for publisher in publishers %}
+                                    <option value="{{ publisher.id }}">{{ publisher.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleDropdownFormPassword2">Publish Date</label>
+                        <input type="text" class="form-control" name="publish_date" id="exampleDropdownFormPassword2" placeholder="datepicker here">
+                    </div>
+
+                    <div class="container-login100-form-btn">
+						<button class="login100-form-btn">
+							Submit
+						</button>
+					</div>
+				</form>
+
+				<div class="login100-more" style="background-image: url('/static/images/bg-03.jpg');">
+				</div>
+			</div>
+		</div>
+	</div>
+
+<!--===============================================================================================-->
+
+    <script src="/static/js/books_add.js"></script>
+
+{% endblock %}
+
+</body>
+</html>

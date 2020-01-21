@@ -1,0 +1,46 @@
+<head>
+    <link rel="stylesheet" type="text/css" href="../../static/css/book_list.css">
+    <link rel="stylesheet" type="text/css" href="../../static/css/book_list_header.css">
+    <title>Book List</title>
+</head>
+
+<section>
+    <div class="row">
+        <div class="column">
+        </div>
+        <div class="column">
+            <h2>Books List</h2>
+        </div>
+        <div class="column">
+            <a class="button button4 pull-right" href="{% url 'logout' %}">Logout</a>
+            <a class="button button4 pull-right" href="{% url 'books_add' %}">Add Book</a>
+        </div>
+    </div>
+
+    <div class="tbl-header">
+        <table cellpadding="0" cellspacing="0" border="0">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Author</th>
+                    <th>Publisher</th>
+                    <th>Publish Date</th>
+                </tr>
+              </thead>
+          </table>
+    </div>
+    <div class="tbl-content">
+        <table cellpadding="0" cellspacing="0" border="0">
+            <tbody>
+                {% for book in books %}
+                    <tr>
+                        <td>{{ book.name }}</td>
+                        <td>{{ book.author }}</td>
+                        <td>{{ book.publisher }}</td>
+                        <td>{{ book.publish_date }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</section>

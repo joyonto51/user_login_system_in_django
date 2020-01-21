@@ -1,0 +1,42 @@
+.button {
+  background-color: #0b2e13; /* Green */
+      border: none;
+      color: white;
+      padding: 6px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 14px;
+      cursor: pointer;
+      border-radius: 12px;
+      float: right;
+      margin-left: 4px;
+  }
+
+  .button4 {
+      border-radius: 12px;
+  }
+
+  * {
+      box-sizing: border-box;
+  }
+
+  /* Create three equal columns that floats next to each other */
+  .column {
+    float: left;
+    width: 33.33%;
+    padding: 10px;
+    height: 60px; /* Should be removed. Only for demonstration */
+  }
+
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  h2{
+      margin: 0;
+      text-align: center;
+      color: white;
+  }
