@@ -14,11 +14,11 @@ sudo apt-get install python3.6
 sudo apt-get install python3-dev
 sudo apt-get install libffi6 libffi-dev
 ```
-### Install virtualenv
+### Install virtual environment
 
 `sudo apt install virtualenv`
 
-### Create virtual venv
+### Create virtual environment
 
 `virtualenv venv --python=python3.6`
 
@@ -37,8 +37,6 @@ sudo apt-get install libffi6 libffi-dev
 ### Migrate
 `python manage.py migrate`
 
-### Create superuser or user
+### Create superuser and login with the credential
 
 `python manage.py createsuperuser`
-or
-`python manage.py createuser`
