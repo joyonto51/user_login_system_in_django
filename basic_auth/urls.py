@@ -13,13 +13,28 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 from django.views.generic import RedirectView
+from rest_framework_jwt.views import obtain_jwt_token, refresh_jwt_token, verify_jwt_token
+from library.views import GetBookListAPIVIew
+
+from basic_auth import settings
 
 urlpatterns = [
     path('', RedirectView.as_view(url='library/books/')),
     path('admin/', admin.site.urls, name='admin_panel'),
     path('account/', include('account.urls')),
     path('library/', include('library.urls')),
+
+    path('api-token-auth/', obtain_jwt_token, name='token_obtain_pair'),
+    path('api-token-refresh/', refresh_jwt_token, name='token_refresh'),
+    path('api-token-verify/', verify_jwt_token),
+
+    path('book-list-api/', GetBookListAPIVIew.as_view())
+
 ]
+
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

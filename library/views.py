@@ -1,6 +1,8 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
+from rest_framework.response import Response
+from rest_framework.views import APIView
 
 from basic_auth.views import BaseView
 from library.forms import BookForm
@@ -27,7 +29,7 @@ class BooksAddView(BaseView):
         }
         return render(request, self.template_name, context)
 
-    def post(self,request, *args, **kwargs):
+    def post(self, request, *args, **kwargs):
         author_id = request.POST.get('author_id')
         publisher_id = request.POST.get('publisher_id')
 
@@ -39,3 +41,14 @@ class BooksAddView(BaseView):
             Book.objects.create(**data)
 
         return HttpResponseRedirect(reverse('books_list'))
+
+
+class GetBookListAPIVIew(APIView):
+
+    def get(self, request):
+
+        context = {
+            'books': "Congratulations"
+        }
+
+        return Response(context)
